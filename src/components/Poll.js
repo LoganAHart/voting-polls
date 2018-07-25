@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getPercentage } from '../utils/helpers';
+import { handleAddAnswer } from '../actions/answers';
 
 const getVoteKeys = () => ['aVotes', 'bVotes', 'cVotes', 'dVotes'];
 
@@ -8,9 +9,13 @@ class Poll extends Component {
   handleAnswer = (answer) => {
     const { poll, authedUser } = this.props;
     this.answered = true;
-    console.log('Add Answer: ', answer);
+    this.props.dispatch(handleAddAnswer({
+      authedUser,
+      id: poll.id,
+      answer,
+    }));
   }
-  
+
   render() {
     if (this.props.poll === null) {
       return <p>This poll does not exist</p>
