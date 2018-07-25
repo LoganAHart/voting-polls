@@ -43,7 +43,7 @@ class Poll extends Component {
                     this.handleAnswer(key[0])
                   }
                 }}
-                className={`option ${vote === key[0] ? 'chosen' : ''}`}>
+                className={`option ${vote[0] === key[0] ? 'chosen' : ''}`}>
                   {vote === null
                     ? poll[key]
                     : <div className='result'>
