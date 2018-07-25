@@ -10,6 +10,7 @@ class Poll extends Component {
     this.answered = true;
     console.log('Add Answer: ', answer);
   }
+  
   render() {
     if (this.props.poll === null) {
       return <p>This poll does not exist</p>
