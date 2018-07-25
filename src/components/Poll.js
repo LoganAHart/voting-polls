@@ -4,6 +4,12 @@ import { getPercentage } from '../utils/helpers'
 import { handleAddAnswer } from '../actions/answers'
 
 const getVoteKeys = () => ['aVotes', 'bVotes', 'cVotes', 'dVotes']
+const renderHighlight = (vote, key) => {
+  if (vote) {
+    return `option ${vote[0] === key[0] ? 'chosen' : ''}`;
+  }
+  return `option ${vote === key[0] ? 'chosen' : ''}`;
+}
 
 class Poll extends Component {
   handleAnswer = (answer) => {
@@ -43,7 +49,7 @@ class Poll extends Component {
                     this.handleAnswer(key[0])
                   }
                 }}
-                className={`option ${vote[0] === key[0] ? 'chosen' : ''}`}>
+                className={renderHighlight(vote, key)}>
                   {vote === null
                     ? poll[key]
                     : <div className='result'>
